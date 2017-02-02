@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <TextView
+        android:text="Nom article :"
+        android:textSize="18dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="75dp"
+        android:id="@+id/TexteNom" />
+
+    <TextView
+        android:text="Catégorie :"
+        android:textSize="18dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="150dp"
+        android:id="@+id/TexteCategorie" />
+
+    <TextView
+        android:text="Prix :"
+        android:textSize="18dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="225dp"
+        android:id="@+id/TextePrix" />
+
+    <TextView
+        android:text="Code Barre :"
+        android:textSize="18dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="300dp"
+        android:id="@+id/TexteCode" />
+
+    <TextView
+        android:text="Quantité :"
+        android:textSize="18dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="375dp"
+        android:id="@+id/TexteQuantite" />
+
+    <TextView
+        android:text="Promotion :"
+        android:textSize="18dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="450dp"
+        android:id="@+id/TextePromotion" />
+
+    <TextView
+        android:text="Position :"
+        android:textSize="18dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="525dp"
+        android:id="@+id/TextePosition" />
+
+    <TextView
+        android:text="TextView"
+        android:textSize="18dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="350dp"
+        android:layout_marginTop="75dp"
+        android:id="@+id/ValeurNom" />
+
+    <TextView
+        android:text="TextView"
+        android:textSize="18dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="350dp"
+        android:layout_marginTop="150dp"
+        android:id="@+id/ValeurCategorie" />
+
+    <TextView
+        android:text="TextView"
+        android:textSize="18dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="350dp"
+        android:layout_marginTop="225dp"
+        android:id="@+id/ValeurPrix" />
+
+    <TextView
+        android:text="TextView"
+        android:textSize="18dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="350dp"
+        android:layout_marginTop="300dp"
+        android:id="@+id/ValeurCode" />
+
+    <TextView
+        android:text="TextView"
+        android:textSize="18dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="350dp"
+        android:layout_marginTop="375dp"
+        android:id="@+id/ValeurQuantite" />
+
+    <TextView
+        android:text="TextView"
+        android:textSize="18dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="350dp"
+        android:layout_marginTop="450dp"
+        android:id="@+id/ValeurPromotion" />
+
+    <TextView
+        android:text="TextView"
+        android:textSize="18dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="350dp"
+        android:layout_marginTop="525dp"
+        android:id="@+id/ValeurPosition" />
+
+
+    <Button
+        android:text="Retour"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:width="150dp"
+        android:height="80dp"
+        android:textSize="25dp"
+        android:layout_marginLeft="430dp"
+        android:layout_marginTop="700dp"
+        android:id="@+id/Retour" />
+</RelativeLayout>
