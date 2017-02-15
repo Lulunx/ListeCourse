@@ -1,6 +1,9 @@
 package com.test.listecourse;
 
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -42,6 +45,19 @@ public class MenuAccueil extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        Base bdd=new Base(this,"BASE",null,3);
+        Produit fromage=new Produit("Laitage", 1, "Camembert Président", 1023102, 1.92, 0.0, "F12");
+        ContentValues values = new ContentValues();
+        //on lui ajoute une valeur associé à une clé (qui est le nom de la colonne dans laquelle on veut mettre la valeur)
+        values.put("Categorie", fromage.categorie);
+        values.put("Code", fromage.code);
+        values.put("Nom", fromage.nom);
+        SQLiteDatabase Base = bdd.getWritableDatabase();
+        Base.insert("Produits", null, values);
+        Cursor c= Base.query("Produits", new String[] {"Categorie", "Code", "Nom"}, null, null, null, null, null, null);
+        Produit result=bdd.cursorToProduit(c);
+        Toast.makeText(this, result.toString(), Toast.LENGTH_SHORT).show();
     }
 
     @Override
