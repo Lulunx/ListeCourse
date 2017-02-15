@@ -10,7 +10,7 @@ import java.util.ArrayList;
  * Created by Lucas on 01/02/2017.
  */
 
-public class produit implements Serializable {
+public class Produit implements Serializable {
     String categorie;
     int quantite;
     String nom;
@@ -19,11 +19,11 @@ public class produit implements Serializable {
     double promotion;
     String emplacement;
 
-    public produit(){
+    public Produit(){
 
     }
 
-    public produit(String categorie, int quantite, String nom, int code, double prix, double promotion, String emplacement){
+    public Produit(String categorie, int quantite, String nom, int code, double prix, double promotion, String emplacement){
         this.categorie=categorie;
         this.quantite=quantite;
         this.nom=nom;
@@ -38,7 +38,7 @@ public class produit implements Serializable {
         return nom+"            "+prix+" €\n"+categorie;
     }
 
-    public produit RetrouverProduit(ArrayList<produit> listeprod, String tostr){
+    public Produit RetrouverProduit(ArrayList<Produit> listeprod, String tostr){
         for(int i=0;i<listeprod.size();i++){
             Log.i("TAG", listeprod.get(i).toString());
             if(listeprod.get(i).toString().equals(tostr))

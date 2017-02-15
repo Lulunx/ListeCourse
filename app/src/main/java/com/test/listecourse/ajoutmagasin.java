@@ -13,7 +13,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class ajoutmagasin extends AppCompatActivity {
+public class AjoutMagasin extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

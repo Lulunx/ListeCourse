@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="100dp"
         android:layout_marginTop="75dp"
-        android:id="@+id/TexteNom" />
+        android:id="@+id/texteNom" />
 
     <TextView
         android:text="Catégorie :"
@@ -18,7 +18,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="100dp"
         android:layout_marginTop="150dp"
-        android:id="@+id/TexteCategorie" />
+        android:id="@+id/texteCategorie" />
 
     <TextView
         android:text="Prix :"
@@ -27,7 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="100dp"
         android:layout_marginTop="225dp"
-        android:id="@+id/TextePrix" />
+        android:id="@+id/textePrix" />
 
     <TextView
         android:text="Code Barre :"
@@ -36,7 +36,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="100dp"
         android:layout_marginTop="300dp"
-        android:id="@+id/TexteCode" />
+        android:id="@+id/texteCode" />
 
     <TextView
         android:text="Quantité :"
@@ -45,7 +45,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="100dp"
         android:layout_marginTop="375dp"
-        android:id="@+id/TexteQuantite" />
+        android:id="@+id/texteQuantite" />
 
     <TextView
         android:text="Promotion :"
@@ -54,7 +54,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="100dp"
         android:layout_marginTop="450dp"
-        android:id="@+id/TextePromotion" />
+        android:id="@+id/textePromotion" />
 
     <TextView
         android:text="Position :"
@@ -63,7 +63,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="100dp"
         android:layout_marginTop="525dp"
-        android:id="@+id/TextePosition" />
+        android:id="@+id/textePosition" />
 
     <TextView
         android:text="TextView"
@@ -72,7 +72,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="350dp"
         android:layout_marginTop="75dp"
-        android:id="@+id/ValeurNom" />
+        android:id="@+id/valeurNom" />
 
     <TextView
         android:text="TextView"
@@ -81,7 +81,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="350dp"
         android:layout_marginTop="150dp"
-        android:id="@+id/ValeurCategorie" />
+        android:id="@+id/valeurCategorie" />
 
     <TextView
         android:text="TextView"
@@ -90,7 +90,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="350dp"
         android:layout_marginTop="225dp"
-        android:id="@+id/ValeurPrix" />
+        android:id="@+id/valeurPrix" />
 
     <TextView
         android:text="TextView"
@@ -99,7 +99,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="350dp"
         android:layout_marginTop="300dp"
-        android:id="@+id/ValeurCode" />
+        android:id="@+id/valeurCode" />
 
     <TextView
         android:text="TextView"
@@ -108,7 +108,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="350dp"
         android:layout_marginTop="375dp"
-        android:id="@+id/ValeurQuantite" />
+        android:id="@+id/valeurQuantite" />
 
     <TextView
         android:text="TextView"
@@ -117,7 +117,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="350dp"
         android:layout_marginTop="450dp"
-        android:id="@+id/ValeurPromotion" />
+        android:id="@+id/valeurPromotion" />
 
     <TextView
         android:text="TextView"
@@ -126,7 +126,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="350dp"
         android:layout_marginTop="525dp"
-        android:id="@+id/ValeurPosition" />
+        android:id="@+id/valeurPosition" />
 
 
     <Button
@@ -138,5 +138,5 @@
         android:textSize="25dp"
         android:layout_marginLeft="430dp"
         android:layout_marginTop="700dp"
-        android:id="@+id/Retour" />
+        android:id="@+id/retour" />
 </RelativeLayout>

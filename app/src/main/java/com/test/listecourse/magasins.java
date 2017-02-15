@@ -13,7 +13,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
-public class magasins extends AppCompatActivity {
+public class Magasins extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,14 +27,14 @@ public class magasins extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivityForResult(new Intent(magasins.this, ajoutmagasin.class),1);
+                startActivityForResult(new Intent(Magasins.this, AjoutMagasin.class),1);
 
             }
         });
         liste.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent,View view, int position, long id) {
-                Intent modif = new Intent(magasins.this, ajoutmagasin.class);
+                Intent modif = new Intent(Magasins.this, AjoutMagasin.class);
                 modif.putExtra("magasin",String.valueOf(liste.getItemAtPosition(position)));
                 startActivityForResult(modif,2);
             }

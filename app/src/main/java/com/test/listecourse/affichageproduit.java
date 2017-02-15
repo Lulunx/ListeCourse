@@ -18,21 +18,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class affichageproduit extends AppCompatActivity {
+public class AffichageProduit extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.affichage_produit);
-        final produit affich = (produit)getIntent().getSerializableExtra("produit");
-        Button retour= (Button) findViewById(R.id.Retour);
-        TextView nom= (TextView) findViewById(R.id.ValeurNom);
-        TextView prix= (TextView) findViewById(R.id.ValeurPrix);
-        TextView categorie= (TextView) findViewById(R.id.ValeurCategorie);
-        TextView promotion= (TextView) findViewById(R.id.ValeurPromotion);
-        TextView quantite= (TextView) findViewById(R.id.ValeurQuantite);
-        TextView position= (TextView) findViewById(R.id.ValeurPosition);
-        TextView code= (TextView) findViewById(R.id.ValeurCode);
+        final Produit affich = (Produit)getIntent().getSerializableExtra("produit");
+        Button retour= (Button) findViewById(R.id.retour);
+        TextView nom= (TextView) findViewById(R.id.valeurNom);
+        TextView prix= (TextView) findViewById(R.id.valeurPrix);
+        TextView categorie= (TextView) findViewById(R.id.valeurCategorie);
+        TextView promotion= (TextView) findViewById(R.id.valeurPromotion);
+        TextView quantite= (TextView) findViewById(R.id.valeurQuantite);
+        TextView position= (TextView) findViewById(R.id.valeurPosition);
+        TextView code= (TextView) findViewById(R.id.valeurCode);
 
         nom.setText(String.valueOf(affich.nom));
         prix.setText(String.valueOf(affich.prix+" €"));
@@ -45,7 +45,7 @@ public class affichageproduit extends AppCompatActivity {
         retour.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(affichageproduit.this,listeproduit.class));
+                finish();
             }
         });
     }
