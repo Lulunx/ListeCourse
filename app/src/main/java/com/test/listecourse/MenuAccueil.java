@@ -86,7 +86,7 @@ public class MenuAccueil extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            return true;
+            startActivity(new Intent(this, ActivityParametre.class));
         }
 
         return super.onOptionsItemSelected(item);
