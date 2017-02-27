@@ -1,9 +1,13 @@
 package com.test.listecourse;
 
+import android.app.Fragment;
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -14,14 +18,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class ListeProduit extends AppCompatActivity {
+public class ListeProduit extends Fragment {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater,
+                             ViewGroup container,
+                             Bundle savedInstanceState){
+
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.produits);
-        final ListView liste= (ListView) findViewById(R.id.liste1);
-        Button retour= (Button) findViewById(R.id.retour);
+        View view = inflater.inflate(R.layout.produits,container,false);
+        final ListView liste= (ListView) view.findViewById(R.id.liste1);
+        Button retour= (Button) view.findViewById(R.id.retour);
 
         Produit fromage=new Produit("Laitage", 1, "Camembert Président", 1023102, 1.92, 0.0, "F12");
         Produit rillettes=new Produit("Charcuterie", 4, "Poulet Roti Bordeaux Chesnel", 11232154, 2.43, 0.0, "C04");
@@ -37,22 +44,29 @@ public class ListeProduit extends AppCompatActivity {
             listeprodoff.add(rillettes);
             listeprodoff.add(pq);
 
-        liste.setAdapter(new ArrayAdapter<Produit>(this ,android.R.layout.simple_list_item_1, listeprodoff));
+        liste.setAdapter(new ArrayAdapter<Produit>(getActivity() ,android.R.layout.simple_list_item_1, listeprodoff));
         liste.setOnItemClickListener(
                 new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        Intent vueproduit=new Intent(ListeProduit.this, AffichageProduit.class);
+                        Toast.makeText(getActivity(), "azeaze", Toast.LENGTH_SHORT).show();
+                        FragmentTransaction fragmenTransac = getFragmentManager().beginTransaction();
+                        AffichageProduit frag = new AffichageProduit();
                         Produit inter=listeprodoff.get(position);
-                        vueproduit.putExtra("produit", inter);
-                        startActivity(vueproduit);
+                        Bundle bundle = new Bundle();
+                        bundle.putSerializable("produit", inter);
+                        frag.setArguments(bundle);
+                        fragmenTransac.replace(R.id.accrochefrag, frag)
+                                .addToBackStack(null).commit();
+                        //getSupportActionBar().setTitle("Produits");
                     }});
 
         retour.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                finish();
+                getActivity().onBackPressed();
             }
         });
+        return view;
     }
 }

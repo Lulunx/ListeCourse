@@ -1,10 +1,13 @@
 package com.test.listecourse;
 
 import android.app.Activity;
+import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -18,21 +21,28 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class AffichageProduit extends AppCompatActivity {
+public class AffichageProduit extends Fragment {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater,
+                             ViewGroup container,
+                             Bundle savedInstanceState){
+
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.affichage_produit);
-        final Produit affich = (Produit)getIntent().getSerializableExtra("produit");
-        Button retour= (Button) findViewById(R.id.retour);
-        TextView nom= (TextView) findViewById(R.id.valeurNom);
-        TextView prix= (TextView) findViewById(R.id.valeurPrix);
-        TextView categorie= (TextView) findViewById(R.id.valeurCategorie);
-        TextView promotion= (TextView) findViewById(R.id.valeurPromotion);
-        TextView quantite= (TextView) findViewById(R.id.valeurQuantite);
-        TextView position= (TextView) findViewById(R.id.valeurPosition);
-        TextView code= (TextView) findViewById(R.id.valeurCode);
+        View view = inflater.inflate(R.layout.affichage_produit,container,false);
+        Bundle bundle = this.getArguments();
+        Produit affich=new Produit();
+        if (bundle != null) {
+            affich = (Produit) bundle.getSerializable("produit");
+        }
+        Button retour= (Button) view.findViewById(R.id.retour);
+        TextView nom= (TextView) view.findViewById(R.id.valeurNom);
+        TextView prix= (TextView) view.findViewById(R.id.valeurPrix);
+        TextView categorie= (TextView) view.findViewById(R.id.valeurCategorie);
+        TextView promotion= (TextView) view.findViewById(R.id.valeurPromotion);
+        TextView quantite= (TextView) view.findViewById(R.id.valeurQuantite);
+        TextView position= (TextView) view.findViewById(R.id.valeurPosition);
+        TextView code= (TextView) view.findViewById(R.id.valeurCode);
 
         nom.setText(String.valueOf(affich.nom));
         prix.setText(String.valueOf(affich.prix+" €"));
@@ -45,8 +55,10 @@ public class AffichageProduit extends AppCompatActivity {
         retour.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                finish();
+                getActivity().onBackPressed();
             }
         });
+
+        return view;
     }
 }

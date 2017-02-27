@@ -1,5 +1,7 @@
 package com.test.listecourse;
 
+import android.app.Activity;
+import android.app.FragmentManager;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
@@ -7,6 +9,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.app.FragmentTransaction;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -21,21 +24,19 @@ import android.widget.Toast;
 public class MenuAccueil extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    public FragmentManager fragmentManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_accueil);
+        Accueil frag=new Accueil();
+        fragmentManager=getFragmentManager();
+        FragmentTransaction fragmentTransac = fragmentManager.beginTransaction();
+        fragmentTransac.replace(R.id.accrochefrag, frag);
+        fragmentTransac.commit();
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -58,6 +59,15 @@ public class MenuAccueil extends AppCompatActivity
         Cursor c= Base.query("Produits", new String[] {"Categorie", "Code", "Nom"}, null, null, null, null, null, null);
         Produit result=bdd.cursorToProduit(c);
         Toast.makeText(this, result.toString(), Toast.LENGTH_SHORT).show();
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });
     }
 
     @Override
@@ -90,6 +100,7 @@ public class MenuAccueil extends AppCompatActivity
         }
 
         return super.onOptionsItemSelected(item);
+
     }
 
     @SuppressWarnings("StatementWithEmptyBody")
@@ -98,17 +109,24 @@ public class MenuAccueil extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.listMag) {
-            startActivity(new Intent(this, Magasins.class));
+        FragmentTransaction fragmenTransac= getFragmentManager().beginTransaction();
 
+        if (id == R.id.listMag) {
+            Magasins frag = new Magasins();
+            fragmenTransac.replace(R.id.accrochefrag, frag).addToBackStack(null);
+            getSupportActionBar().setTitle("Magasins");
             // Handle the camera action
         } else if (id == R.id.listProduit) {
-            startActivity(new Intent(this,ListeProduit.class));
-
+            ListeProduit frag = new ListeProduit();
+            fragmenTransac.replace(R.id.accrochefrag, frag).addToBackStack(null);
+            getSupportActionBar().setTitle("Produits");
         }else if (id == R.id.listListe) {
-            //startActivity(new Intent(this,ListeProduit.class));
+            //Listes frag = new Listes();
+            //fragmenTransac.replace(R.id.content_menu_accueil, frag).addToBackStack(null).commit();;
             Toast.makeText(this, "Liste de liste", Toast.LENGTH_SHORT).show();
         }
+
+        fragmenTransac.commit();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
