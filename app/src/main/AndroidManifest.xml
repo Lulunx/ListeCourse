@@ -9,20 +9,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".Magasins"
-            android:label="@string/title_activity_magasins"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
             android:name=".AjoutMagasin"
             android:label="@string/title_activity_ajoutmagasin"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".ListeProduit"
-            android:label="listeprod"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".AffichageProduit"
-            android:label="affichageprod"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".MenuAccueil"
@@ -40,7 +28,8 @@
         </activity>
         <activity
             android:name=".ActivityParametre"
-            android:label="@string/title_activity_parametre"></activity>
+            android:label="@string/title_activity_parametre" />
     </application>
+    <uses-permission android:name="android.permission.INTERNET"/>
 
 </manifest>

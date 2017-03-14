@@ -2,9 +2,13 @@ package com.test.listecourse;
 
 
 import android.app.Activity;
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.widget.SimpleCursorAdapter;
 import android.widget.Toast;
 import android.widget.Toolbar;
 import android.view.View;
@@ -21,6 +25,7 @@ public class Magasins extends Fragment {
     public View onCreateView(LayoutInflater inflater,
                                 ViewGroup container,
                                 Bundle savedInstanceState){
+        Base bdd=new Base(getActivity(),"BASE",null);
         super.onCreate(savedInstanceState);
         View view = inflater.inflate(R.layout.content_magasins,container,false);
 
@@ -34,6 +39,16 @@ public class Magasins extends Fragment {
         });
 
         final ListView liste = (ListView)  view.findViewById(R.id.listemag);
+        SQLiteDatabase Base = bdd.getWritableDatabase();
+        Cursor c= Base.query("Magasins", new String[] {"Nom","idmagasin as _id"}, null, null, null, null, null, null);
+
+        SimpleCursorAdapter adapter = new SimpleCursorAdapter(
+                getActivity(),
+                android.R.layout.simple_list_item_2, //R.layout.un_magasin,
+                c,
+                new String[]{"Nom","_id"},
+                new int[]{android.R.id.text1, android.R.id.text2});
+        liste.setAdapter(adapter);
         liste.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent,View view, int position, long id) {
@@ -55,8 +70,8 @@ public class Magasins extends Fragment {
             case(1):
                 switch(resultCode){
                     case(Activity.RESULT_OK):
-                        String mot = data.getStringExtra("NOM_MAGASIN");
-                        Toast.makeText(getActivity(), mot, Toast.LENGTH_SHORT).show();
+                        //android.R.layout.simple_list_item_2.notifyDataChanged();
+                        Toast.makeText(getActivity(), "Magasin inséré avec succès", Toast.LENGTH_SHORT).show();
                 }
             case(2):
                 switch(resultCode){

@@ -37,7 +37,7 @@ public class MenuAccueil extends AppCompatActivity
         fragmentTransac.commit();
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        getSupportActionBar().setTitle("Menu");
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -47,14 +47,22 @@ public class MenuAccueil extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        Base bdd=new Base(this,"BASE",null,3);
+        Base bdd=new Base(this,"BASE",null);
+        SQLiteDatabase Base = bdd.getWritableDatabase();
+        ContentValues Leclerc=new ContentValues();
+        Leclerc.put("idmagasin", "1");
+        Leclerc.put("Nom", "Leclerc");
+        ContentValues Carrefour=new ContentValues();
+        Carrefour.put("idmagasin", "2");
+        Carrefour.put("Nom", "Carrefour");
+        Base.insert("Magasins", null, Leclerc);
+        Base.insert("Magasins", null, Carrefour);
         Produit fromage=new Produit("Laitage", 1, "Camembert Président", 1023102, 1.92, 0.0, "F12");
         ContentValues values = new ContentValues();
         //on lui ajoute une valeur associé à une clé (qui est le nom de la colonne dans laquelle on veut mettre la valeur)
         values.put("Categorie", fromage.categorie);
         values.put("Code", fromage.code);
         values.put("Nom", fromage.nom);
-        SQLiteDatabase Base = bdd.getWritableDatabase();
         Base.insert("Produits", null, values);
         Cursor c= Base.query("Produits", new String[] {"Categorie", "Code", "Nom"}, null, null, null, null, null, null);
         Produit result=bdd.cursorToProduit(c);
@@ -115,7 +123,6 @@ public class MenuAccueil extends AppCompatActivity
             Magasins frag = new Magasins();
             fragmenTransac.replace(R.id.accrochefrag, frag).addToBackStack(null);
             getSupportActionBar().setTitle("Magasins");
-            // Handle the camera action
         } else if (id == R.id.listProduit) {
             ListeProduit frag = new ListeProduit();
             fragmenTransac.replace(R.id.accrochefrag, frag).addToBackStack(null);
@@ -125,6 +132,12 @@ public class MenuAccueil extends AppCompatActivity
             //fragmenTransac.replace(R.id.content_menu_accueil, frag).addToBackStack(null).commit();;
             Toast.makeText(this, "Liste de liste", Toast.LENGTH_SHORT).show();
         }
+        else if (id == R.id.testConnexion) {
+            EssaisConnexionResau frag = new EssaisConnexionResau();
+            fragmenTransac.replace(R.id.accrochefrag, frag).addToBackStack(null);
+            getSupportActionBar().setTitle("Connexion");
+        }
+
 
         fragmenTransac.commit();
 

@@ -1,7 +1,9 @@
 package com.test.listecourse;
 
 import android.app.Activity;
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -34,7 +36,11 @@ public class AjoutMagasin extends AppCompatActivity {
                 public void onClick(View view) {
 
                     Intent retour = new Intent();
-                    retour.putExtra("NOM_MAGASIN", champ.getText().toString());
+                    Base bdd=new Base(getApplicationContext(),"BASE",null);
+                    SQLiteDatabase Base = bdd.getWritableDatabase();
+                    ContentValues magasin=new ContentValues();
+                    magasin.put("Nom", champ.getText().toString());
+                    Base.insert("Magasins", null, magasin);
                     setResult(Activity.RESULT_OK, retour);
                     finish();
                 }

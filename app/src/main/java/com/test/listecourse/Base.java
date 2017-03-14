@@ -11,10 +11,11 @@ import android.database.sqlite.SQLiteOpenHelper;
  */
 
 public class Base extends SQLiteOpenHelper {
+    private static int VERSIONBASE=5;
     private static final String Listes = "Listes";
     private static final String COL_ID_LISTES = "id";
     private static final String COL_ID_PRODUIT = "id_produit";
-    private static final String COL_ID_MAGASIN = "id_magasin";
+    private static final String COL_ID_MAGASIN = "idmagasin";
     private static final String COL_QUANTITE = "quantite";
     private static final String COL_ACHETE = "achete";
 
@@ -60,8 +61,8 @@ public class Base extends SQLiteOpenHelper {
 
 
 
-    public Base(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
-        super(context, name, factory, version);
+    public Base(Context context, String name, SQLiteDatabase.CursorFactory factory) {
+        super(context, name, factory, VERSIONBASE);
     }
 
     @Override
