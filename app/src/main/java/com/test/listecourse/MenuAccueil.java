@@ -137,6 +137,11 @@ public class MenuAccueil extends AppCompatActivity
             fragmenTransac.replace(R.id.accrochefrag, frag).addToBackStack(null);
             getSupportActionBar().setTitle("Connexion");
         }
+        else if (id == R.id.lancerService) {
+            LancerService frag = new LancerService();
+            fragmenTransac.replace(R.id.accrochefrag, frag).addToBackStack(null);
+            getSupportActionBar().setTitle("Service");
+        }
 
 
         fragmenTransac.commit();
@@ -144,5 +149,11 @@ public class MenuAccueil extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        stopService(new Intent(this, MyIntentService.class));
     }
 }
