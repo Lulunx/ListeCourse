@@ -32,7 +32,6 @@ public class LancerService extends Fragment {
         super.onCreate(savedInstanceState);
         View view = inflater.inflate(R.layout.activity_lancement_service,container,false);
         final Button Lancer=(Button)view.findViewById(R.id.lancer);
-        final Button Retour=(Button)view.findViewById(R.id.retour);
         final TextView Text=(TextView)view.findViewById(R.id.text);
 
         Lancer.setOnClickListener(new View.OnClickListener() {
@@ -44,13 +43,6 @@ public class LancerService extends Fragment {
             }
         });
 
-
-        Retour.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                getActivity().onBackPressed();
-            }
-        });
         return view;
     }
 

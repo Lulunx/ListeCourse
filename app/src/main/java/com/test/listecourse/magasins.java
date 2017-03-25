@@ -8,6 +8,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.util.Log;
 import android.widget.SimpleCursorAdapter;
 import android.widget.Toast;
 import android.widget.Toolbar;
@@ -52,9 +53,10 @@ public class Magasins extends Fragment {
         liste.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent,View view, int position, long id) {
-
                 Intent modif = new Intent(getActivity(), AjoutMagasin.class);
-                modif.putExtra("magasin",String.valueOf(liste.getItemAtPosition(position)));
+                Cursor Curs=(Cursor)liste.getItemAtPosition(position);
+                String val=Curs.getString(0);
+                modif.putExtra("magasin",val);
                 startActivityForResult(modif,2);
             }
         });

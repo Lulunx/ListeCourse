@@ -35,7 +35,6 @@ public class AffichageProduit extends Fragment {
         if (bundle != null) {
             affich = (Produit) bundle.getSerializable("produit");
         }
-        Button retour= (Button) view.findViewById(R.id.retour);
         TextView nom= (TextView) view.findViewById(R.id.valeurNom);
         TextView prix= (TextView) view.findViewById(R.id.valeurPrix);
         TextView categorie= (TextView) view.findViewById(R.id.valeurCategorie);
@@ -51,13 +50,6 @@ public class AffichageProduit extends Fragment {
         quantite.setText(String.valueOf(affich.quantite));
         position.setText(String.valueOf(affich.emplacement));
         code.setText(String.valueOf(affich.code));
-
-        retour.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                getActivity().onBackPressed();
-            }
-        });
 
         return view;
     }

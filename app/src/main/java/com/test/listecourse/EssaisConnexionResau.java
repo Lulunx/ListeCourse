@@ -30,7 +30,6 @@ public class EssaisConnexionResau extends Fragment {
             super.onCreate(savedInstanceState);
             View view = inflater.inflate(R.layout.activity_essais_reseau,container,false);
             final Button Connexion=(Button)view.findViewById(R.id.connexion);
-            final Button Retour=(Button)view.findViewById(R.id.retour);
             final TextView Text=(TextView)view.findViewById(R.id.text);
 
             Connexion.setOnClickListener(new View.OnClickListener() {
@@ -48,13 +47,6 @@ public class EssaisConnexionResau extends Fragment {
                 }
             });
 
-
-            Retour.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    getActivity().onBackPressed();
-                }
-            });
 
 
 

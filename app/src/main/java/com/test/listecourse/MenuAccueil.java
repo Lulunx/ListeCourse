@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.app.FragmentTransaction;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -49,15 +50,23 @@ public class MenuAccueil extends AppCompatActivity
 
         Base bdd=new Base(this,"BASE",null);
         SQLiteDatabase Base = bdd.getWritableDatabase();
-        ContentValues Leclerc=new ContentValues();
-        Leclerc.put("idmagasin", "1");
-        Leclerc.put("Nom", "Leclerc");
-        ContentValues Carrefour=new ContentValues();
-        Carrefour.put("idmagasin", "2");
-        Carrefour.put("Nom", "Carrefour");
-        Base.insert("Magasins", null, Leclerc);
-        Base.insert("Magasins", null, Carrefour);
-        Produit fromage=new Produit("Laitage", 1, "Camembert Président", 1023102, 1.92, 0.0, "F12");
+        Cursor c1= Base.query("Magasins", new String[] {"idmagasin as _id"}, "_id=1", null, null, null, null, null);
+        if(c1.getCount()==0){
+            ContentValues Leclerc=new ContentValues();
+            Leclerc.put("idmagasin", "1");
+            Leclerc.put("Nom", "Leclerc");
+            Base.insert("Magasins", null, Leclerc);
+        }
+
+        Cursor c2= Base.query("Magasins", new String[] {"idmagasin as _id"}, "_id=2", null, null, null, null, null);
+        if(c2.getCount()==0){
+            ContentValues Carrefour=new ContentValues();
+            Carrefour.put("idmagasin", "2");
+            Carrefour.put("Nom", "Carrefour");
+            Base.insert("Magasins", null, Carrefour);
+        }
+
+        /*Produit fromage=new Produit("Laitage", 1, "Camembert Président", 1023102, 1.92, 0.0, "F12");
         ContentValues values = new ContentValues();
         //on lui ajoute une valeur associé à une clé (qui est le nom de la colonne dans laquelle on veut mettre la valeur)
         values.put("Categorie", fromage.categorie);
@@ -66,13 +75,13 @@ public class MenuAccueil extends AppCompatActivity
         Base.insert("Produits", null, values);
         Cursor c= Base.query("Produits", new String[] {"Categorie", "Code", "Nom"}, null, null, null, null, null, null);
         Produit result=bdd.cursorToProduit(c);
-        Toast.makeText(this, result.toString(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, result.toString(), Toast.LENGTH_SHORT).show();*/
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                Snackbar.make(view, "Hey Dude !", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
         });

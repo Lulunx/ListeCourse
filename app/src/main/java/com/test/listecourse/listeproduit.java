@@ -28,7 +28,6 @@ public class ListeProduit extends Fragment {
         super.onCreate(savedInstanceState);
         View view = inflater.inflate(R.layout.produits,container,false);
         final ListView liste= (ListView) view.findViewById(R.id.liste1);
-        Button retour= (Button) view.findViewById(R.id.retour);
 
         Produit fromage=new Produit("Laitage", 1, "Camembert Président", 1023102, 1.92, 0.0, "F12");
         Produit rillettes=new Produit("Charcuterie", 4, "Poulet Roti Bordeaux Chesnel", 11232154, 2.43, 0.0, "C04");
@@ -49,7 +48,6 @@ public class ListeProduit extends Fragment {
                 new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        Toast.makeText(getActivity(), "azeaze", Toast.LENGTH_SHORT).show();
                         FragmentTransaction fragmenTransac = getFragmentManager().beginTransaction();
                         AffichageProduit frag = new AffichageProduit();
                         Produit inter=listeprodoff.get(position);
@@ -61,12 +59,6 @@ public class ListeProduit extends Fragment {
                         //getSupportActionBar().setTitle("Produits");
                     }});
 
-        retour.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                getActivity().onBackPressed();
-            }
-        });
         return view;
     }
 }
